@@ -1,0 +1,23 @@
+#layer{
+	padding:20px;
+}
+#layer select{
+	height:24px;
+}
+#search input{
+	height:16px;
+	padding:4px;
+	width:200px;
+}
+#search tr{
+	height:36px;
+}
+.btn{
+	padding:3px;
+	font-size:16px;
+	text-align:center;
+	width:80px;
+	letter-spacing:5px;
+	margin-top: 20px;
+    border-radius:8px;
+}

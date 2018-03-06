@@ -1,0 +1,12 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    static-path-pattern: /static/**
+
+  thymeleaf:
+    cache: false
+    enabled: false
+  freemarker:
+    check-template-location: false
