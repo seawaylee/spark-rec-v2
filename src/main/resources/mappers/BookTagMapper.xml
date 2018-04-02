@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.ncut.dao.spider.BookTagMapper">
+	<resultMap id="BaseResultMap" type="cn.edu.ncut.dto.spider.BookTag">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="tagname" property="tagname" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="category" property="category" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, tagname, url, category
+	</sql>
+
+	<select id="selectByName" resultMap="BaseResultMap"  parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from tb_booktag
+		where tagname = #{tagname,jdbcType=VARCHAR}
+	</select>
+</mapper>

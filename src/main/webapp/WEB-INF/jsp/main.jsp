@@ -17,6 +17,10 @@
 </head>
 <body>
 
+<div class="top">
+    <div style="text-align:center;padding-top:25px;"><span>Spark混合推荐系统监控平台</span></div>
+</div>
+
 <!--菜单-->
 <div class="left-menu">
     <ul id="menu">
@@ -24,7 +28,7 @@
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon jggl"></i>数据采集<span class="sz"></span></a>
             <ul>
-                <li class="menu-list"><a href="" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>爬虫监控<span class="sz"></span></a></li>
+                <li class="menu-list"><a href="${ctx}/spider/monitor/showSysStatus" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>爬虫监控<span class="sz"></span></a></li>
                 <li class="menu-list"><a href="" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>数据分析<span class="sz"></span></a></li>
             </ul>
         </li>
@@ -64,6 +68,15 @@
             </ul>
         </li>
     </ul>
+</div>
+<!--菜单右边的iframe页面-->
+<div id="right-content" class="right-content">
+    <div class="content">
+        <div id="page_content">
+            <iframe id="menuFrame" name="menuFrame"  style="overflow:visible;"
+                    width="100%" height="100%" src="${ctx}/query/showRegionMap"></iframe>
+        </div>
+    </div>
 </div>
 
 </body>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.ncut.doubanWebSpider.dao.BookCommentMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.ncut.dto.spider.BookComment">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="bookno" property="bookno" jdbcType="VARCHAR"/>
+        <result column="bookname" property="bookname" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="rating" property="rating" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="DATE"/>
+        <result column="usefulnum" property="usefulnum" jdbcType="INTEGER"/>
+        <result column="userurl" property="userurl" jdbcType="VARCHAR"/>
+        <result column="commenturl" property="commenturl" jdbcType="VARCHAR"/>
+        <result column="isbn" property="isbn" jdbcType="VARCHAR"/>
+        <result column="userno" property="userno" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, bookno, bookname, username, rating, content, time, usefulnum,
+        userurl, commenturl,
+        isbn, userno
+    </sql>
+    <resultMap id="BaseInfoForStatic" type="cn.edu.ncut.dto.spider.BookComment" extends="BaseResultMap">
+        <result column="itemResultAmount" property="itemResultAmount"
+                jdbcType="INTEGER"/>
+        <result column="selectLimitAmount" property="selectLimitAmount"
+                jdbcType="INTEGER"/>
+    </resultMap>
+    <!-- 根据用户对评论数进行统计 -->
+    <select id="getCommentNumByUserNoStatistic" resultMap="BaseInfoForStatic">
+        SELECT
+            t.userno,
+            count(t.userno) AS itemResultAmount
+        FROM tb_bookcomment t
+        GROUP BY t.userno
+        ORDER BY count(t.userno)
+        DESC
+        LIMIT #{selectLimitAmount}
+    </select>
+    <!-- 评分值分布 -->
+    <select id="getRatingStatistic" resultMap="BaseInfoForStatic">
+        SELECT
+            t.rating,
+            COUNT(t.rating) AS itemResultAmount
+        FROM tb_bookcomment t
+        GROUP BY t.rating
+    </select>
+    <!--根据书评时间进行统计-->
+    <select id="getCommentTimeStatistic" resultMap="BaseResultMap">
+        SELECT
+            t.time,
+            count(year(t.time)) AS itemResultAmount
+        FROM tb_bookcomment t
+        GROUP BY year(t.time)
+    </select>
+    <!--获取有评分的评论-->
+    <select id="selectAllHasRatings" parameterType="INTEGER" resultMap="BaseResultMap">
+        SELECT
+            userno,
+            bookno,
+            rating,
+            content
+        FROM tb_bookcomment t
+        WHERE t.rating != -1
+        LIMIT #{from}, 1000000
+    </select>
+    <!--获取1分或5分的极性评论-->
+    <select id="selectAllPNRatings" parameterType="INTEGER" resultMap="BaseResultMap">
+        SELECT
+            userno,
+            bookno,
+            rating,
+            content
+        FROM tb_bookcomment t
+        WHERE t.rating = 1 OR t.rating = 5
+        LIMIT #{from}, 1000000
+    </select>
+    <select id="selectByRatings" parameterType="INTEGER" resultMap="BaseResultMap">
+        SELECT
+            userno,
+            bookno,
+            rating,
+            content
+        FROM tb_bookcomment t
+        WHERE t.rating = #{rating}
+        LIMIT #{from}, 87864
+    </select>
+    <!--获取所有没评分的记录-->
+    <select id="selectAllNoRatings" resultMap="BaseResultMap">
+        SELECT
+            userno,
+            bookno,
+            content
+        FROM tb_bookcomment t
+        WHERE t.rating = -1
+    </select>
+    <!-- 查询所有评论用户 去重 -->
+    <select id="findAllCommentersNo" resultType="java.lang.String">
+        SELECT DISTINCT (userurl)
+        FROM tb_bookcomment
+    </select>
+</mapper>

@@ -10,3 +10,9 @@ spring:
     enabled: false
   freemarker:
     check-template-location: false
+
+datasource:
+  url: jdbc:mysql://localhost:3306/douban?Unicode=true&characterEncoding=UTF-8
+  username: root
+  password: lxw1993822
+  driver-class-name: com.mysql.jdbc.Driver

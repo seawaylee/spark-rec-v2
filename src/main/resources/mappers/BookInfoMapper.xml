@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.ncut.dao.spider.BookInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.ncut.dto.spider.BookInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="no" property="no" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="authorname" property="authorname" jdbcType="VARCHAR" />
+    <result column="press" property="press" jdbcType="VARCHAR" />
+    <result column="orititle" property="orititle" jdbcType="VARCHAR" />
+    <result column="translator" property="translator" jdbcType="VARCHAR" />
+    <result column="publishtime" property="publishtime" jdbcType="DATE" />
+    <result column="pages" property="pages" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="binding" property="binding" jdbcType="VARCHAR" />
+    <result column="series" property="series" jdbcType="VARCHAR" />
+    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+    <result column="rating" property="rating" jdbcType="DOUBLE" />
+    <result column="comments" property="comments" jdbcType="INTEGER" />
+    <result column="contentinfo" property="contentinfo" jdbcType="VARCHAR" />
+    <result column="authorinfo" property="authorinfo" jdbcType="VARCHAR" />
+    <result column="usertags" property="usertags" jdbcType="VARCHAR" />
+    <result column="alsolikeebook" property="alsolikeebook" jdbcType="VARCHAR" />
+    <result column="alsolikebook" property="alsolikebook" jdbcType="VARCHAR" />
+    <result column="shortcommentsnum" property="shortcommentsnum" jdbcType="INTEGER" />
+    <result column="bookcommentsnum" property="bookcommentsnum" jdbcType="INTEGER" />
+    <result column="readingnotesnum" property="readingnotesnum" jdbcType="INTEGER" />
+    <result column="bookurl" property="bookurl" jdbcType="VARCHAR" />
+    <result column="discussnum" property="discussnum" jdbcType="INTEGER" />
+    <result column="readingsnum" property="readingsnum" jdbcType="INTEGER" />
+    <result column="hasreadnum" property="hasreadnum" jdbcType="INTEGER" />
+    <result column="wantreadnum" property="wantreadnum" jdbcType="INTEGER" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, no, title, authorname, press, orititle, translator, publishtime, pages, price, 
+    binding, series, isbn, rating, comments, contentinfo, authorinfo, usertags, alsolikeebook, 
+    alsolikebook, shortcommentsnum, bookcommentsnum, readingnotesnum, bookurl, discussnum, 
+    readingsnum, hasreadnum, wantreadnum, tag
+  </sql>
+</mapper>

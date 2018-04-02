@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.ncut.dao.spider.SimpleBookInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.ncut.dto.spider.SimpleBookInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bookno" property="bookno" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="translator" property="translator" jdbcType="VARCHAR" />
+    <result column="press" property="press" jdbcType="VARCHAR" />
+    <result column="publishtime" property="publishtime" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="ratingnum" property="ratgingnum" jdbcType="INTEGER" />
+    <result column="rating" property="rating" jdbcType="DOUBLE" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bookno, title, author, translator, press, publishtime, price, rating, url, tag, img
+  </sql>
+    <resultMap id="BaseInfoForStatic" type="cn.edu.ncut.dto.spider.SimpleBookInfo" extends="BaseResultMap">
+		<result column="itemResultAmount" property="itemResultAmount" jdbcType="INTEGER" />
+		<result column="selectLimitAmount" property="selectLimitAmount" jdbcType="INTEGER" />	
+	</resultMap>
+	<!-- 根据标签对图书数量进行统计 -->
+	<select id="getBookNumByTagStatic" resultMap="BaseInfoForStatic">
+		select
+		tag,count(tag) as itemResultAmount from tb_simplebookinfo
+		group by
+		tag order by itemResultAmount desc limit #{selectLimitAmount}
+	</select>
+	<!-- 根据图书评分排序 -->
+	<select id="getBookRatingSort" resultMap="BaseResultMap">
+		select
+		 <include refid="Base_Column_List" />
+		 from tb_simplebookinfo
+		order by rating desc limit #{selectLimitAmount}
+	</select>
+	<!-- 根据书名查询图书 -->
+	<select id="selectByName" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tb_simplebookinfo
+		where lower(title) like #{title}
+		order by rating desc
+	</select>
+	<!--查询图书编号和名称-->
+	<select id="selectAllNames" resultMap="BaseResultMap">
+		select title,url,tag
+		from tb_simplebookinfo
+	</select>
+	<!--根据url组查询图书-->
+	<select id="selectAllByUrl" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from tb_simplebookinfo t
+		where t.url in
+		<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	<!-- 根据Url查询图书 -->
+	<select id="selectByUrl" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from tb_simplebookinfo t
+		where t.url = #{item}
+	</select>
+	<!-- 获取所有图示地址，按标签排序 -->
+	<select id="selectAllUrls" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from tb_simplebookinfo t
+		where t.ratingnum > 100000
+--  		where t.id > 42436
+-- 		order by t.ratingnum asc
+	</select>
+	<!-- 更新bookno -->
+	<update id="update" parameterType="cn.edu.ncut.dto.spider.SimpleBookInfo">
+		update tb_simplebookinfo t
+		set t.bookno = #{bookno} where id = #{id}
+	</update>
+</mapper>
