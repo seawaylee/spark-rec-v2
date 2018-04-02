@@ -4,6 +4,7 @@ import cn.edu.ncut.dao.spider.BookCommentMapper;
 import cn.edu.ncut.dao.spider.SimpleBookInfoMapper;
 import cn.edu.ncut.dto.spider.BookComment;
 import cn.edu.ncut.dto.spider.SimpleBookInfo;
+import cn.edu.ncut.util.RedisUtil;
 import cn.edu.ncut.util.SystemStatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ public class SpiderController {
     private SimpleBookInfoMapper simpleBookInfoMapper;
     @Autowired
     private BookCommentMapper bookCommentMapper;
+    @Autowired
+    private RedisUtil redisUtil;
 
     public static final String HOST = "http://book.douban.com";
 

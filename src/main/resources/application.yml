@@ -10,9 +10,14 @@ spring:
     enabled: false
   freemarker:
     check-template-location: false
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
 
 datasource:
   url: jdbc:mysql://localhost:3306/douban?Unicode=true&characterEncoding=UTF-8
   username: root
   password: lxw1993822
   driver-class-name: com.mysql.jdbc.Driver
+

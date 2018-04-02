@@ -9,7 +9,7 @@
 <head>
     <title>Spark混合推荐</title>
 
-    <link rel="stylesheet" href="${stc}/static/css/authorLibrary/main.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="${stc}/static/css/main.css" type="text/css" media="screen"/>
 
     <script type="text/javascript" src="${stc}/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="${stc}/static/js/tendina.min.js"></script>
@@ -28,7 +28,7 @@
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon jggl"></i>数据采集<span class="sz"></span></a>
             <ul>
-                <li class="menu-list"><a href="${ctx}/spider/monitor/showSysStatus" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>爬虫监控<span class="sz"></span></a></li>
+                <li class="menu-list"><a href="${ctx}/spider/monitor/showSysStatus" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right1"></i>爬虫监控<span class="sz"></span></a></li>
                 <li class="menu-list"><a href="" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>数据分析<span class="sz"></span></a></li>
             </ul>
         </li>
