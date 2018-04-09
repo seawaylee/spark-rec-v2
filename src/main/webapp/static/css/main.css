@@ -46,10 +46,10 @@ transform:rotate(-90deg);
 .xlcddown{
 	width:20px;height:20px; margin-top:2px !important; 
 	}
-.sz:after{content:url(../img/set.png); float:right; margin:14px 10px 0 0}
-.icon-chevron-right1:before{padding-left:10px; content:url(../img/bi.png)}
-.icon-chevron-right2:before{padding-left:10px; content:url(../img/menu.png)}
-.icon-chevron-right3:before{padding-left:10px; content:url(../img/w_cloud.png)}
+.sz:after{content:url(${ctx}/static/img/set.png); float:right; margin:14px 10px 0 0}
+.icon-chevron-right1:before{padding-left:10px; content:url(${ctx}/static/img/bi.png)}
+.icon-chevron-right2:before{padding-left:10px; content:url(${ctx}/static/img/menu.png)}
+.icon-chevron-right3:before{padding-left:10px; content:url(${ctx}/static/img/w_cloud.png)}
 .glyph-icon{vertical-align:middle;font-family: FontAwesome;font-size:12px;font-style: normal; margin-top:4px; float:left;}
 
 .left-menu{

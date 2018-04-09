@@ -1,8 +1,11 @@
 package cn.edu.ncut.dto.spider;
 
+import org.springframework.stereotype.Service;
+
 import javax.persistence.Table;
 import java.util.Date;
 
+@Service
 @Table(name = "tb_userbookcollect")
 public class UserBookStatus {
     private Integer id;

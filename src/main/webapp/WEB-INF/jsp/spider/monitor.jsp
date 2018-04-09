@@ -6,7 +6,7 @@
 <head>
     <title>爬虫状态监控</title>
     <script src="${ctx}/static/js/echarts.min.js"></script>
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="${ctx}/static/js/jquery.min.js"></script>
 </head>
 <body>
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
@@ -158,7 +158,7 @@
                     var res = [];
                     var len = 10;
                     while (len--) {
-                        res.push(0);
+                        res.push((Math.random() * 10 + 5).toFixed(1) - 0);
                     }
                     return res;
                 })()
@@ -170,7 +170,7 @@
                     var res = [];
                     var len = 0;
                     while (len < 10) {
-                        res.push(0);
+                        res.push(Math.round(Math.random() * 1000));
                         len++;
                     }
                     return res;
@@ -216,20 +216,6 @@
         netDelayChart.setOption(netDelayOption, true);
         jvmStatChart.setOption(jvmStatOption, true);
     }, 2000);
-
-    // 定时数据抓取量
-    // setInterval(function () {
-    //     $.ajax({
-    //         url: '/spider/monitor/getAmount',
-    //         success: function (data) {
-    //             console.log(data)
-    //             netDelayOption.series[0].data[0].value = data.delay;
-    //             jvmStatOption.series[0].data[0].value = (data.usedHeap / data.maxHeap * 100).toFixed(2);
-    //         }
-    //     });
-    //     netDelayChart.setOption(netDelayOption, true);
-    //     jvmStatChart.setOption(jvmStatOption, true);
-    // }, 2000);
 </script>
 </body>
 </html>

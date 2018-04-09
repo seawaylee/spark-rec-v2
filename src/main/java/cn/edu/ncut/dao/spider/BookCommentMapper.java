@@ -15,13 +15,17 @@ public interface BookCommentMapper extends Mapper<BookComment> {
 
     List<BookComment> getCommentTimeStatistic();
 
-    List<BookComment> selectAllHasRatings(int from);
+    List<BookComment> selectAllHasRatings(@Param("from") int from, @Param("to") int to);
 
-    List<BookComment> selectAllNoRatings();
+    List<BookComment> selectAllNoRatings(@Param("from") int from, @Param("to") int to);
 
-    List<BookComment> selectAllPNRatings(int from);
+    Integer selectHasRatingCount();
 
-    List<BookComment> selectByRatings(@Param("rating") int rating, @Param("from") int from);
+    Integer selectNoRatingCount();
+
+    Integer selectRatingCount(@Param("rating") int rating);
+
+    List<BookComment> selectByRatings(@Param("rating") int rating, @Param("from") int from, @Param("to") int to);
 
     List<String> findAllCommentersNo();
 

@@ -160,4 +160,24 @@ public class BookComment {
     public void setUserno(String userno) {
         this.userno = userno == null ? null : userno.trim();
     }
+
+    @Override
+    public String toString() {
+        return "BookComment{" +
+                "id=" + id +
+                ", bookno='" + bookno + '\'' +
+                ", bookname='" + bookname + '\'' +
+                ", username='" + username + '\'' +
+                ", rating=" + rating +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", usefulnum=" + usefulnum +
+                ", userurl='" + userurl + '\'' +
+                ", commenturl='" + commenturl + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", userno='" + userno + '\'' +
+                ", selectLimitAmount=" + selectLimitAmount +
+                ", itemResultAmount=" + itemResultAmount +
+                '}';
+    }
 }

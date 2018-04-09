@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="${stc}/static/css/main.css" type="text/css" media="screen"/>
 
-    <script type="text/javascript" src="${stc}/static/js/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="${stc}/static/js/tendina.min.js"></script>
     <script type="text/javascript" src="${stc}/static/js/AL-index.js"></script>
 </head>
@@ -29,16 +29,17 @@
             <a target="menuFrame" class="firsta"><i class="glyph-icon jggl"></i>数据采集<span class="sz"></span></a>
             <ul>
                 <li class="menu-list"><a href="${ctx}/spider/monitor/showSysStatus" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right1"></i>爬虫监控<span class="sz"></span></a></li>
-                <li class="menu-list"><a href="" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>数据分析<span class="sz"></span></a></li>
+                <li class="menu-list"><a href="${ctx}/spider/monitor/showDataAnalysis" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right3"></i>数据分析<span class="sz"></span></a></li>
             </ul>
         </li>
 
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon jggl"></i>情感分析<span class="sz"></span></a>
             <ul>
-                <li><a href="${ctx}/author/list" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>数据集分类<span class="sz"></span></a></li>
-                <li><a href="${ctx}/organization/list" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>数据预处理<span class="sz"></span></a></li>
-                <li><a href="${ctx}/organization/list" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>朴素贝叶斯分类<span class="sz"></span></a></li>
+                <li><a href="${ctx}/sentiment/getComments" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>语料数据源<span class="sz"></span></a></li>
+                <li><a href="${ctx}/sentiment/getPrepareData" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>提取极性情感语料<span class="sz"></span></a></li>
+                <li><a href="${ctx}/sentiment/getVocabData" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>构造情感词典<span class="sz"></span></a></li>
+                <li><a href="${ctx}/sentiment/getBayesRes" target="menuFrame" class="firsta"><i class="glyph-icon icon-chevron-right2"></i>朴素贝叶斯分类<span class="sz"></span></a></li>
             </ul>
         </li>
 

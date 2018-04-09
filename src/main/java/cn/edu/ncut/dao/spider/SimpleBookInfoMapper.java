@@ -16,5 +16,6 @@ public interface SimpleBookInfoMapper extends Mapper<SimpleBookInfo>
 	List<SimpleBookInfo> selectAllByUrl(List<String> urls);
 	List<SimpleBookInfo> selectByUrl(String url);
 	List<SimpleBookInfo> selectAllUrls();
+	SimpleBookInfo getBookByNo(String bookno);
 	int update(SimpleBookInfo simpleBookInfo);
 }

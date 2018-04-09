@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.edu.ncut.doubanWebSpider.dao.BookCommentMapper">
+<mapper namespace="cn.edu.ncut.dao.spider.BookCommentMapper">
+
+    <cache type="cn.edu.ncut.configuration.MybatisRedisCache">
+        <property name="eviction" value="LRU"/>
+        <property name="flushInterval" value="6000000"/>
+        <property name="size" value="1024"/>
+        <property name="readOnly" value="false"/>
+    </cache>
+
+
     <resultMap id="BaseResultMap" type="cn.edu.ncut.dto.spider.BookComment">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="bookno" property="bookno" jdbcType="VARCHAR"/>
@@ -62,18 +71,25 @@
             content
         FROM tb_bookcomment t
         WHERE t.rating != -1
-        LIMIT #{from}, 1000000
+        LIMIT #{from}, #{to}
     </select>
-    <!--获取1分或5分的极性评论-->
-    <select id="selectAllPNRatings" parameterType="INTEGER" resultMap="BaseResultMap">
-        SELECT
-            userno,
-            bookno,
-            rating,
-            content
+    <!--获取有评分的评论总数-->
+    <select id="selectHasRatingCount" resultType="Integer">
+        SELECT count(id)
         FROM tb_bookcomment t
-        WHERE t.rating = 1 OR t.rating = 5
-        LIMIT #{from}, 1000000
+        WHERE t.rating != -1
+    </select>
+    <!--获取无评分的评论总数-->
+    <select id="selectNoRatingCount" resultType="Integer">
+        SELECT count(id)
+        FROM tb_bookcomment t
+        WHERE t.rating = -1
+    </select>
+    <!--获取极性评论总数-->
+    <select id="selectRatingCount" resultType="Integer">
+        SELECT count(id)
+        FROM tb_bookcomment t
+        WHERE t.rating = #{rating}
     </select>
     <select id="selectByRatings" parameterType="INTEGER" resultMap="BaseResultMap">
         SELECT
@@ -83,7 +99,7 @@
             content
         FROM tb_bookcomment t
         WHERE t.rating = #{rating}
-        LIMIT #{from}, 87864
+        LIMIT #{from}, #{to}
     </select>
     <!--获取所有没评分的记录-->
     <select id="selectAllNoRatings" resultMap="BaseResultMap">
@@ -93,6 +109,7 @@
             content
         FROM tb_bookcomment t
         WHERE t.rating = -1
+        LIMIT #{from}, #{to}
     </select>
     <!-- 查询所有评论用户 去重 -->
     <select id="findAllCommentersNo" resultType="java.lang.String">
