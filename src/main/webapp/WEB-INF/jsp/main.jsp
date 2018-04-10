@@ -46,9 +46,10 @@
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon zzgl"></i>协同过滤推荐<span class="sz"></span></a>
             <ul>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练数据集状态</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>构建推荐模型</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>推荐结果测试</a></li>
+                <li><a href="${ctx}/cf/showDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>用户-图书关系模型</a></li>
+                <li><a href="${ctx}/cf/showCfData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练集数据统计</a></li>
+                <li><a href="${ctx}/cf/getRatingData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练集数据表单</a></li>
+                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>CF模型测试</a></li>
             </ul>
         </li>
 

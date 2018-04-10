@@ -8,8 +8,8 @@
     <script src="${ctx}/static/js/echarts.min.js"></script>
     <script src="${ctx}/static/js/jquery.min.js"></script>
     <link rel="stylesheet" href="${ctx}/static/css/sentiment/category.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/sentiment/Iframe.css"/>
     <link rel="stylesheet" href="${ctx}/static/css/bootstrap.min.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/sentiment/Iframe.css"/>
 </head>
 <body>
 

@@ -15,15 +15,6 @@
         <td>
             <div id="ratingDom" style="width: 600px;height:400px;"></div>
         </td>
-        <td rowspan="2">
-            <div id="bookCountDom" style="width: 1100px;height:800px;"></div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div id="jvmStatDom" style="width: 600px;height:400px;"></div>
-        </td>
-    </tr>
 </table>
 
 

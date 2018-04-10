@@ -13,7 +13,11 @@ public interface BookCommentMapper extends Mapper<BookComment> {
 
     List<BookComment> getRatingStatistic();
 
+    List<BookComment> getBookRatingTimes(Integer selectLimitAmount);
+
     List<BookComment> getCommentTimeStatistic();
+
+    List<BookComment> getCommentByBookNo(String bookno);
 
     List<BookComment> selectAllHasRatings(@Param("from") int from, @Param("to") int to);
 

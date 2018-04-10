@@ -1,5 +1,7 @@
 package cn.edu.ncut.dao.sentiment;
 
+import cn.edu.ncut.dao.base.BaseDao;
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Repository;
 
@@ -13,12 +15,7 @@ import java.util.List;
  * @create 2018/4/8 21:10
  */
 @Repository
-public class SentimenDao {
-    public static String ROOT_DIR = "/Users/lixiwei-mac/Documents/DataSet/recommend/";
-    public static String BOOK_NAME = ROOT_DIR + "BookName.txt";
-    public static String PN_VOCAB = ROOT_DIR + "PNVocab.txt";
-    public static String NB_RESULT = ROOT_DIR + "NBSResult.txt";
-    public static String NO_RATING_COMMENT = ROOT_DIR + "NoRatingUserComment.txt";
+public class SentimenDao extends BaseDao {
 
     public List<String> vocabStrList;
     public List<String> bayesResStrList;
@@ -26,9 +23,9 @@ public class SentimenDao {
 
     @PostConstruct
     private void init() throws IOException {
-        vocabStrList = FileUtils.readLines(new File(PN_VOCAB));
-        bayesResStrList = FileUtils.readLines(new File(NB_RESULT));
-        noRatingCommentStrList = FileUtils.readLines(new File(NO_RATING_COMMENT));
+        vocabStrList = JSON.parseObject(redisTemplate.opsForValue().get("sentiment:vocab"), List.class);
+        bayesResStrList = JSON.parseObject(redisTemplate.opsForValue().get("sentiment:bayes:rating"), List.class);
+        noRatingCommentStrList = JSON.parseObject(redisTemplate.opsForValue().get("sentiment:norating:comment"), List.class);
     }
 
     public List<String> getVocabStrList() {

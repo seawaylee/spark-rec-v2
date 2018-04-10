@@ -35,6 +35,12 @@
         <result column="selectLimitAmount" property="selectLimitAmount"
                 jdbcType="INTEGER"/>
     </resultMap>
+    <!-- 根据书籍id查询书评 -->
+    <select id="getCommentByBookNo" resultMap="BaseInfoForStatic">
+        SELECT t.userno
+        FROM tb_bookcomment t
+        WHERE t.bookno = #{bookno}
+    </select>
     <!-- 根据用户对评论数进行统计 -->
     <select id="getCommentNumByUserNoStatistic" resultMap="BaseInfoForStatic">
         SELECT
@@ -44,6 +50,16 @@
         GROUP BY t.userno
         ORDER BY count(t.userno)
         DESC
+        LIMIT #{selectLimitAmount}
+    </select>
+    <!-- 统计图书被评论数 -->
+    <select id="getBookRatingTimes" resultMap="BaseInfoForStatic">
+        SELECT
+            t.bookno,
+            count(t.bookno) AS itemResultAmount
+        FROM tb_bookcomment t
+        GROUP BY t.bookno
+        HAVING count(t.bookno) &gt; 20 AND count(t.bookno) &lt; 200
         LIMIT #{selectLimitAmount}
     </select>
     <!-- 评分值分布 -->
