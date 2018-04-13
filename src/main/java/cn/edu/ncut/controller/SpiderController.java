@@ -65,10 +65,10 @@ public class SpiderController {
     public Map<String, Integer> getAmount(HttpServletRequest request) {
         Map<String, Integer> resMap = new HashMap<>();
         SimpleBookInfo bookInfo = new SimpleBookInfo();
-        //resMap.put("book", simpleBookInfoMapper.selectCount(bookInfo));
+        //resMap.put("book", simpleBookInfoMapper.selectStatusCount(bookInfo));
         resMap.put("book", (int) (Math.random() * 100000));
         BookComment comment = new BookComment();
-        //resMap.put("comment", bookCommentMapper.selectCount(comment));
+        //resMap.put("comment", bookCommentMapper.selectStatusCount(comment));
         resMap.put("comment", (int) (Math.random() * 10000000));
         return resMap;
     }

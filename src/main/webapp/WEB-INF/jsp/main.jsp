@@ -49,15 +49,15 @@
                 <li><a href="${ctx}/cf/showDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>用户-图书关系模型</a></li>
                 <li><a href="${ctx}/cf/showCfData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练集数据统计</a></li>
                 <li><a href="${ctx}/cf/getRatingData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练集数据表单</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>CF模型测试</a></li>
+                <li><a href="${ctx}/cf/getRecommend" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>CF模型测试</a></li>
             </ul>
         </li>
 
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon zzgl"></i>相似度算法<span class="sz"></span></a>
             <ul>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据状态</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据计算状态</a></li>
+                <li><a href="${ctx}/similar/showData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据状态</a></li>
+                <li><a href="${ctx}/similar/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据计算状态</a></li>
                 <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据计算结果</a></li>
             </ul>
         </li>
