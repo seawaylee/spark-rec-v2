@@ -56,9 +56,9 @@
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon zzgl"></i>相似度算法<span class="sz"></span></a>
             <ul>
-                <li><a href="${ctx}/similar/showData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据状态</a></li>
-                <li><a href="${ctx}/similar/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据计算状态</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据计算结果</a></li>
+                <li><a href="${ctx}/similar/showData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>原始数据集</a></li>
+                <li><a href="${ctx}/similar/showCalcSimilar" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>相似度计算</a></li>
+                <li><a href="${ctx}/similar/getSimilarResData?getSimilarResData?pageNum=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>相似度计算结果</a></li>
             </ul>
         </li>
         <li class="menu-list">

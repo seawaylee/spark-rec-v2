@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.ncut.dao.spider.UserInfoMapper">
     <cache type="cn.edu.ncut.configuration.MybatisRedisCache">
-        <property name="eviction" value="LRU" />
-        <property name="flushInterval" value="6000000" />
-        <property name="size" value="1024" />
-        <property name="readOnly" value="false" />
+        <property name="eviction" value="LRU"/>
+        <property name="flushInterval" value="6000000"/>
+        <property name="size" value="1024"/>
+        <property name="readOnly" value="false"/>
     </cache>
     <resultMap id="BaseResultMap" type="cn.edu.ncut.dto.spider.UserInfo">
         <id column="id" jdbcType="INTEGER" property="id"/>
@@ -33,5 +33,9 @@
         <include refid="Base_Column_List"/>
         from tb_userinfo t
         where t.userno = #{userno}
+    </select>
+    <select id="selectAllUserNo" resultType="String">
+        SELECT userno
+        FROM tb_userinfo t
     </select>
 </mapper>

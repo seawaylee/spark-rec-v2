@@ -14,6 +14,9 @@ spring:
     database: 0
     host: localhost
     port: 6379
+    jedis:
+      pool:
+        max-active: 200
 
 datasource:
   url: jdbc:mysql://localhost:3306/douban?Unicode=true&characterEncoding=UTF-8

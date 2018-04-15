@@ -24,6 +24,12 @@
         FROM <![CDATA[  ${table} ]]> t
         LIMIT #{from}, #{to}
     </select>
+    <select id="selectByUserNo" resultType="String">
+        SELECT
+        bookno
+        FROM <![CDATA[  ${table} ]]> t
+        WHERE t.userno = '${userno}'
+    </select>
     <select id="selectStatusCount" resultType="Integer">
         SELECT count(id)
         FROM ${table} t
