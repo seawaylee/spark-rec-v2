@@ -34,4 +34,10 @@
         SELECT count(id)
         FROM ${table} t
     </select>
+    <select id="selectByTypeAndUser" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM <![CDATA[  ${table} ]]> t
+        WHERE userno = #{userno}
+    </select>
 </mapper>

@@ -18,7 +18,7 @@
 <body>
 
 <div class="top">
-    <div style="text-align:center;padding-top:25px;"><span>Spark混合推荐系统监控平台</span></div>
+    <div style="text-align:center;padding-top:15px;"><span>Spark混合推荐系统监控平台</span></div>
 </div>
 
 <!--菜单-->
@@ -64,9 +64,9 @@
         <li class="menu-list">
             <a target="menuFrame" class="firsta"><i class="glyph-icon zzgl"></i>混合推荐集成<span class="sz"></span></a>
             <ul>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据状态</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据</a></li>
-                <li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>数据计算结果</a></li>
+                <li><a href="${ctx}/hybrid/showSimilarDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>相似度产出数据状态</a></li>
+                <li><a href="${ctx}/hybrid/cfDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>协同过滤产出数据状态</a></li>
+                <li><a href="${ctx}/hybrid/getRecommend" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>混合推荐测试</a></li>
             </ul>
         </li>
     </ul>
@@ -75,7 +75,7 @@
 <div id="right-content" class="right-content">
     <div class="content">
         <div id="page_content">
-            <iframe id="menuFrame" name="menuFrame"  style="overflow:visible;"
+            <iframe id="menuFrame" name="menuFrame" style="overflow:visible;"
                     width="100%" height="100%" src="${ctx}/query/showRegionMap"></iframe>
         </div>
     </div>

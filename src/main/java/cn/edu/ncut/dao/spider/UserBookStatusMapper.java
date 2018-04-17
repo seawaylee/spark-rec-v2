@@ -15,4 +15,7 @@ public interface UserBookStatusMapper extends Mapper<UserBookStatus> {
     Set<String> selectByUserNo(@Param("table") String table, @Param("userno") String userno);
 
     Integer selectStatusCount(@Param("table") String table);
+
+    List<UserBookStatus> selectByTypeAndUser(@Param("table") String table, @Param("userno") String userno);
+
 }

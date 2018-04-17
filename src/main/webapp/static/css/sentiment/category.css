@@ -21,7 +21,7 @@ select{
 #page_control{
     float:right;
     font-weight:bold;
-    margin-top: 20px;
+    margin-top: 1px;
 }
 #curpage{
     width:48px;
