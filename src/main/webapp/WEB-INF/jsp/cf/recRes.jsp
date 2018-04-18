@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div class="cp_title">CF模型试试推荐</div>
+<div class="cp_title">CF模型实时推荐</div>
 
 <div class="add_cp">
     <form action="${ctx}/cf/getRecommend" method="POST">

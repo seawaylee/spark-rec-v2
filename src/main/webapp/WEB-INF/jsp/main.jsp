@@ -66,7 +66,7 @@
             <ul>
                 <li><a href="${ctx}/hybrid/showSimilarDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>相似度产出数据状态</a></li>
                 <li><a href="${ctx}/hybrid/showCfRecDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>协同过滤产出数据状态</a></li>
-                <li><a href="${ctx}/hybrid/getRecommend" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>混合推荐测试</a></li>
+                <li><a href="${ctx}/hybrid/showHybridRecResult" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>混合推荐测试</a></li>
             </ul>
         </li>
     </ul>

@@ -37,6 +37,11 @@ public class SimilarService {
     public static final String USER_MAX_VALUE_SPLITER = " - ";
     public static final Random RANDOM = new Random(System.currentTimeMillis());
     public static final Integer MAX_WORD = 1000;
+    public static final Map<String, String> TYPE_SIM_MAP = new HashMap<String, String>() {{
+        put(COLLECT_KEY, "collectSim");
+        put(WISH_KEY, "wishSim");
+        put(DO_KEY, "doSim");
+    }};
 
     @Autowired
     private StringRedisTemplate redisTemplate;

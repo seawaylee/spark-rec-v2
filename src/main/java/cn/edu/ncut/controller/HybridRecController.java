@@ -49,6 +49,13 @@ public class HybridRecController {
         return "hybrid/cfRecDataStatus";
     }
 
+    @RequestMapping(value = "/showHybridRecResult")
+    public String showHybridRecResult(ModelMap modelMap) {
+        Set<String> userSet = JSON.parseObject(redisTemplate.opsForValue().get(SimilarService.PREPARE_USER_KEY), Set.class);
+        modelMap.put("userSet", userSet);
+        return "hybrid/hybridRecResult";
+    }
+
     @RequestMapping(value = "/similarDataStatus")
     @ResponseBody
     public Object similarDataStatus(@RequestParam(defaultValue = "Thomas.Xie") String user) {
@@ -84,5 +91,50 @@ public class HybridRecController {
         return "hybrid/cfRecDataStatus";
     }
 
+
+    @RequestMapping(value = "/getHybridRecResult")
+    public String getHybridRecResult(@RequestParam(name = "userno", defaultValue = "Thomas.Xie") String userno, ModelMap modelMap, @RequestParam(defaultValue = "1") Integer pageNum) {
+        System.out.println("user=" + userno);
+        Map<String, Object> resultMap = new HashMap<>();
+        // 获取CF推荐结果
+        List<PredictDTO> predictList = cfService.getRecRes(userno);
+        Integer totalRecord = predictList.size();
+        // 获取最相似用户特征
+        String maxSimilarUser = similarService.getMaxSimilarUser(userno.trim());
+        Map<String, List<UserBookStatus>> maxSimUserStatusMap = similarService.getUserStatusTypeMap(maxSimilarUser);
+        Map<String, List<UserBookStatus>> currUserStatusMap = similarService.getUserStatusTypeMap(userno);
+        Map<String, Object> similarMap = similarService.calcSimilar(userno, maxSimilarUser);
+        int kindWeight = 1;
+        float kindSimilar = 0.0F;
+        for (PredictDTO predictDTO : predictList) {
+            for (Map.Entry<String, List<UserBookStatus>> entry : maxSimUserStatusMap.entrySet()) {
+                String statusType = entry.getKey();
+                List<UserBookStatus> simTypedBookStatusList = entry.getValue();
+                for (UserBookStatus simBookStatus : simTypedBookStatusList) {
+                    if (simBookStatus.getBookno().equals(predictDTO.getBookId().toString())) {
+                        if (currUserStatusMap.get(statusType).stream().anyMatch(userBookStatus -> simBookStatus.getBookno().equals(userBookStatus.getBookno()))) {
+                            kindWeight = 2;
+                        }
+                        kindSimilar = Float.valueOf(similarMap.get(SimilarService.TYPE_SIM_MAP.get(statusType)).toString());
+                        System.out.println("kindWeight=" + kindWeight + ", kindSimilar=" + kindSimilar);
+                        predictDTO.setScore(predictDTO.getScore() + predictDTO.getScore() * kindWeight * kindSimilar);
+                    }
+                }
+            }
+
+        }
+        Collections.sort(predictList, Comparator.comparing(PredictDTO::getScore));
+        Collections.reverse(predictList);
+        predictList = predictList.subList(PageUtils.getFrom(pageNum), PageUtils.getFrom(pageNum) + PageUtils.PAGE_SIZE);
+        Set<String> userSet = JSON.parseObject(redisTemplate.opsForValue().get(SimilarService.PREPARE_USER_KEY), Set.class);
+        modelMap.put("userSet", userSet);
+        modelMap.put("user", userno);
+        modelMap.put("predictList", predictList);
+        modelMap.put("pageNum", Math.max(1, pageNum));
+        modelMap.put("totalRecord", totalRecord);
+        modelMap.put("totalPage", PageUtils.getTotalPage(totalRecord));
+
+        return "hybrid/hybridRecResult";
+    }
 
 }
