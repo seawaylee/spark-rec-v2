@@ -16,7 +16,7 @@
 <script type="text/javascript">
     setRowColor();
 </script>
-<div class="cp_title">数据状态</div>
+<div class="cp_title">相似度计算</div>
 <div class="add_cp">
     <form action="${ctx}/similar/calcSimilar" method="POST">
         <div id="queryDiv">

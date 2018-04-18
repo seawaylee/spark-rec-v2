@@ -24,7 +24,7 @@ public class SimilarService {
     public static final String COLLECT_TABLE = "tb_userbookcollect";
     public static final String DO_TABLE = "tb_userbookdo";
     public static final String WISH_TABLE = "tb_userbookwish";
-    private static final String[] USET_BOOK_STATUS_TYPE = new String[]{COLLECT_TABLE, DO_TABLE, WISH_TABLE};
+    public static final String[] USET_BOOK_STATUS_TYPE = new String[]{COLLECT_TABLE, DO_TABLE, WISH_TABLE};
     public static final String PREPARE_USER_KEY = "PREPARE_USER";
     public static final String USER_BOOK_STATUS_KEY = "USER_BOOK_STATUS_";
     public static final String USER_MAX_SIMILAR_KEY = "USER_MAX_SIMILAR_";

@@ -4,27 +4,32 @@ import cn.edu.ncut.dao.cf.UserRatingDao;
 import cn.edu.ncut.dao.sentiment.SentimenDao;
 import cn.edu.ncut.dao.spider.BookCommentMapper;
 import cn.edu.ncut.dao.spider.SimpleBookInfoMapper;
+import cn.edu.ncut.dto.cf.PredictDTO;
 import cn.edu.ncut.dto.cf.UserRatingDTO;
 import cn.edu.ncut.dto.spider.BookComment;
 import cn.edu.ncut.dto.spider.SimpleBookInfo;
 import cn.edu.ncut.dto.spider.extend.BarInfoData;
 import cn.edu.ncut.service.cf.CfService;
+import cn.edu.ncut.service.similar.SimilarService;
 import cn.edu.ncut.util.HttpRequestUtil;
 import cn.edu.ncut.util.PageUtils;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Type;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import com.google.common.reflect.TypeToken;
 
 /**
  * @author SeawayLee
@@ -44,6 +49,8 @@ public class CFController {
     private SentimenDao sentimenDao;
     @Autowired
     private CfService cfService;
+    @Autowired
+    private StringRedisTemplate redisTemplate;
 
     @RequestMapping(value = "/showDataStatus")
     public String showDataStatus(@RequestParam(defaultValue = "1") Integer pageNum, ModelMap modelMap) {
@@ -55,8 +62,10 @@ public class CFController {
         return "cf/dataModel";
     }
 
-    @RequestMapping(value = "/getRecRes")
+    @RequestMapping(value = "/showRecRes")
     public String getRecRes(ModelMap modelMap) {
+        Set<String> userSet = JSON.parseObject(redisTemplate.opsForValue().get(SimilarService.PREPARE_USER_KEY), Set.class);
+        modelMap.put("userSet", userSet);
         return "cf/recRes";
     }
 
@@ -154,28 +163,12 @@ public class CFController {
     }
 
     @RequestMapping("/getRecommend")
-    @ResponseBody
-    public Object getRecommend() {
-        String userno = "58069639";
-        String url = "http://localhost:5000/getRecommend";
-        String param = "userno=" + userno;
-        String response = HttpRequestUtil.sendGet(url, param);
-        String[] booknos = response.substring(1, response.length() - 1).split(",");
-        List<String> urls = new ArrayList<>();
-        for (int i = 0; i < booknos.length; i++) {
-            urls.add("http://book.douban.com/subject/" + booknos[i].trim() + "/?from=tag_all");
-        }
-        List<SimpleBookInfo> books = simpleBookInfoMapper.selectAllByUrl(urls);
-        String html = "";
-        int count = 0;
-        for (SimpleBookInfo book : books) {
-            html += "<img layer-pid=\"" + book.getId() + "\" layer-src=\"" + book.getImg() + "\" src=\"" + book.getImg() + "\" alt=\"" + book.getTitle() + "\"" + " width=\"" + 200 + "\" height=\"" + 300 + "\">";
-            count++;
-            html += "&nbsp";
-            if (count % 5 == 0) {
-                html += "<br>";
-            }
-        }
-        return html;
+    public Object getRecommend(String userno, ModelMap modelMap) {
+        List<PredictDTO> predictList = cfService.getRecRes(userno);
+        Set<String> userSet = JSON.parseObject(redisTemplate.opsForValue().get(SimilarService.PREPARE_USER_KEY), Set.class);
+        modelMap.put("userSet", userSet);
+        modelMap.put("user", userno);
+        modelMap.put("predictList", predictList);
+        return "cf/recRes";
     }
 }

@@ -49,7 +49,7 @@
                 <li><a href="${ctx}/cf/showDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>用户-图书关系模型</a></li>
                 <li><a href="${ctx}/cf/showCfData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练集数据统计</a></li>
                 <li><a href="${ctx}/cf/getRatingData" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>训练集数据表单</a></li>
-                <li><a href="${ctx}/cf/getRecommend" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>CF模型测试</a></li>
+                <li><a href="${ctx}/cf/showRecRes" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>CF模型测试</a></li>
             </ul>
         </li>
 
@@ -65,7 +65,7 @@
             <a target="menuFrame" class="firsta"><i class="glyph-icon zzgl"></i>混合推荐集成<span class="sz"></span></a>
             <ul>
                 <li><a href="${ctx}/hybrid/showSimilarDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>相似度产出数据状态</a></li>
-                <li><a href="${ctx}/hybrid/cfDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>协同过滤产出数据状态</a></li>
+                <li><a href="${ctx}/hybrid/showCfRecDataStatus" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>协同过滤产出数据状态</a></li>
                 <li><a href="${ctx}/hybrid/getRecommend" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>混合推荐测试</a></li>
             </ul>
         </li>

@@ -4,7 +4,7 @@
 <%@ include file="../commons/meta.jsp" %>
 <html>
 <head>
-    <title>数据状态</title>
+    <title>相似度计算结果</title>
     <script src="${ctx}/static/js/echarts.min.js"></script>
     <script src="${ctx}/static/js/jquery.min.js"></script>
     <link rel="stylesheet" href="${ctx}/static/css/sentiment/category.css">
