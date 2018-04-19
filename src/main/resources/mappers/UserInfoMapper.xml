@@ -22,6 +22,10 @@
         <result column="followers" jdbcType="INTEGER" property="followers"/>
         <result column="pic" jdbcType="VARCHAR" property="pic"/>
     </resultMap>
+    <resultMap id="locationStatistic" type="cn.edu.ncut.dto.spider.extend.NameValue">
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="value" property="value" jdbcType="INTEGER"/>
+    </resultMap>
     <sql id="Base_Column_List">
         id, userno, name, signature, location, time, introduction, reading, hasread, wantread,
         followees, followers, pic
@@ -37,5 +41,13 @@
     <select id="selectAllUserNo" resultType="String">
         SELECT userno
         FROM tb_userinfo t
+    </select>
+    <select id="selectLocationStatistic" resultMap="locationStatistic">
+        SELECT
+            t.location        AS name,
+            count(t.location) AS value
+        FROM tb_userinfo t
+        GROUP BY t.location
+        ORDER BY count(t.location) DESC
     </select>
 </mapper>

@@ -18,7 +18,7 @@
 <body>
 
 <div class="top">
-    <div style="text-align:center;padding-top:15px;"><span>Spark混合推荐系统监控平台</span></div>
+    <div style="text-align:center;padding-top:15px;"><span>Spark混合推荐系统数据监控平台</span></div>
 </div>
 
 <!--菜单-->
@@ -76,7 +76,7 @@
     <div class="content">
         <div id="page_content">
             <iframe id="menuFrame" name="menuFrame" style="overflow:visible;"
-                    width="100%" height="100%" src="${ctx}/query/showRegionMap"></iframe>
+                    width="100%" height="100%" src="${ctx}/spider/monitor/showSysStatus"></iframe>
         </div>
     </div>
 </div>

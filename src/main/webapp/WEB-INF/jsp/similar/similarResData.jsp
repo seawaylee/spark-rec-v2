@@ -33,7 +33,7 @@
     }
 
 </script>
-<div class="cp_title">数据状态</div>
+<div class="cp_title">相似度计算结果</div>
 <div class="table_con">
 
     <table>

@@ -1,6 +1,7 @@
 package cn.edu.ncut.dao.spider;
 
 import cn.edu.ncut.dto.spider.BookComment;
+import cn.edu.ncut.dto.spider.extend.NameValue;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Service
 public interface BookCommentMapper extends Mapper<BookComment> {
-    List<BookComment> getCommentNumByUserNoStatistic(Integer selectLimitAmount);
+    List<NameValue> getCommentNumByUserNoStatistic(Integer selectLimitAmount);
 
     List<BookComment> getRatingStatistic();
 

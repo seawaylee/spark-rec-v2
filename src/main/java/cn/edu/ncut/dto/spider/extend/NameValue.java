@@ -3,7 +3,10 @@ package cn.edu.ncut.dto.spider.extend;
 public class NameValue{
 	String name;
 	Integer value;
-	
+
+	public NameValue() {
+	}
+
 	public NameValue(String name, Integer value) {
 		super();
 		this.name = name;

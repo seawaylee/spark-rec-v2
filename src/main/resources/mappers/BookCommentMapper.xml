@@ -35,6 +35,10 @@
         <result column="selectLimitAmount" property="selectLimitAmount"
                 jdbcType="INTEGER"/>
     </resultMap>
+    <resultMap id="statistic" type="cn.edu.ncut.dto.spider.extend.NameValue">
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="value" property="value" jdbcType="INTEGER"/>
+    </resultMap>
     <!-- 根据书籍id查询书评 -->
     <select id="getCommentByBookNo" resultMap="BaseInfoForStatic">
         SELECT t.userno
@@ -42,10 +46,10 @@
         WHERE t.bookno = #{bookno}
     </select>
     <!-- 根据用户对评论数进行统计 -->
-    <select id="getCommentNumByUserNoStatistic" resultMap="BaseInfoForStatic">
+    <select id="getCommentNumByUserNoStatistic" resultMap="statistic">
         SELECT
-            t.userno,
-            count(t.userno) AS itemResultAmount
+            t.userno        AS name,
+            count(t.userno) AS value
         FROM tb_bookcomment t
         GROUP BY t.userno
         ORDER BY count(t.userno)

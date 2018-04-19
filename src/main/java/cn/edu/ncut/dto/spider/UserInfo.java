@@ -1,6 +1,7 @@
 package cn.edu.ncut.dto.spider;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Table(name = "tb_userinfo")
@@ -30,6 +31,16 @@ public class UserInfo {
     private Integer followers;
 
     private String pic;
+
+
+    @Transient
+    private String statisticName;
+
+    /**
+     * 查询结果数量
+     */
+    @Transient
+    private Integer statisticValue;
 
     public Integer getId() {
         return id;
@@ -145,5 +156,21 @@ public class UserInfo {
     public void setPic(String pic)
     {
         this.pic = pic;
+    }
+
+    public String getStatisticName() {
+        return statisticName;
+    }
+
+    public void setStatisticName(String statisticName) {
+        this.statisticName = statisticName;
+    }
+
+    public Integer getStatisticValue() {
+        return statisticValue;
+    }
+
+    public void setStatisticValue(Integer statisticValue) {
+        this.statisticValue = statisticValue;
     }
 }

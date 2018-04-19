@@ -7,25 +7,34 @@
     <title>爬虫状态监控</title>
     <script src="${ctx}/static/js/echarts.min.js"></script>
     <script src="${ctx}/static/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/sentiment/Iframe.css"/>
+    <link rel="stylesheet" href="${ctx}/static/css/sentiment/category.css">
+    <link rel="stylesheet" href="${ctx}/static/css/bootstrap.min.css" type="text/css" media="screen"/>
+    <style>
+        .g-sd2 {
+            position: relative;
+            float: right;
+            width: 50%;
+            height: 90%;
+        }
+
+        .g-mn2 {
+            float: left;
+            width: 50%;
+            height: 90%;
+        }
+    </style>
 </head>
 <body>
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<table>
-    <tr>
-        <td>
-            <div id="netDelayDom" style="width: 600px;height:400px;"></div>
-        </td>
-        <td rowspan="2">
-            <div id="bookCountDom" style="width: 1100px;height:800px;"></div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div id="jvmStatDom" style="width: 600px;height:400px;"></div>
-        </td>
-    </tr>
-</table>
-
+<div class="g-sd2">
+    <div class="cp_title">网络监控</div>
+    <div id="netDelayDom" style="width: 100%;height:100%;"></div>
+</div>
+<div class="g-mn2">
+    <div class="cp_title">JVM监控</div>
+    <div id="jvmStatDom" style="width: 100%;height:100%;"></div>
+</div>
+<div id="bookCountDom" style="width: 100%;height:100%;"></div>
 
 <script type="text/javascript">
     <%-- 网络延迟监控 --%>
@@ -107,6 +116,18 @@
                 type: 'category',
                 boundaryGap: true,
                 data: (function () {
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                        res.push(len + 1);
+                    }
+                    return res;
+                })()
+            },
+            {
+                type: 'category',
+                boundaryGap: true,
+                data: (function () {
                     var now = new Date();
                     var res = [];
                     var len = 10;
@@ -116,34 +137,22 @@
                     }
                     return res;
                 })()
-            },
-            {
-                type: 'category',
-                boundaryGap: true,
-                data: (function () {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                        res.push(len + 1);
-                    }
-                    return res;
-                })()
             }
         ],
         yAxis: [
             {
                 type: 'value',
                 scale: true,
-                name: '书籍总数',
-                max: 100000,
+                name: '书评总数',
+                max: 10000000,
                 min: 0,
                 boundaryGap: [0.2, 0.2]
             },
             {
                 type: 'value',
                 scale: true,
-                name: '书评总数',
-                max: 10000000,
+                name: '书籍总数',
+                max: 100000,
                 min: 0,
                 boundaryGap: [0.2, 0.2]
             }
@@ -187,11 +196,10 @@
         $.ajax({
             url: '/spider/monitor/getAmount',
             success: function (data) {
-                console.log(data)
                 data0.shift();
-                data0.push(data.comment);
+                data0.push(data.book);
                 data1.shift();
-                data1.push(data.book);
+                data1.push(data.comment);
             }
         });
 
