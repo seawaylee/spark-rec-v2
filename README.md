@@ -1,2 +1,26 @@
 # spark-rec-v2
 Spark混合推荐系统大数据监控平台
+# 系统图例
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-1.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-2.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-3.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-4.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-5.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-6.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-7.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-8.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-9.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-10.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-11.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-12.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-13.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-14.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-15.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-16.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-17.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-18.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-19.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-20.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-21.png)
+![ABC](https://github.com/seawaylee/spark-rec-v2/raw/master/img/spark-21.png)
+
