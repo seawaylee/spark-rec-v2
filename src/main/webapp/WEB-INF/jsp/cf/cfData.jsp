@@ -53,48 +53,57 @@
         <%-- 用户评分分布 --%>
         var ratingChart = echarts.init(document.getElementById('ratingDom'));
         $.post("/cf/getCfStatistic", function (ratingData) {
-            var ratingOption = {
-                title: {
-                    text: 'User-Book-Rating',
-                    subtext: 'Rating(1-5)',
-                    x: 'center'
-                },
-                tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
-                },
-                // legend: {
-                //     orient: 'vertical',
-                //     left: 'left',
-                //     data: ratingData.xAxis
-                // },
-                series: [
-                    {
-                        name: '评分值',
-                        type: 'pie',
-                        radius: '80%',
-                        center: ['50%', '60%'],
-                        data: [
-                            {value: ratingData.yAxis[1], name: ratingData.xAxis[1]},
-                            {value: ratingData.yAxis[2], name: ratingData.xAxis[2]},
-                            {value: ratingData.yAxis[3], name: ratingData.xAxis[3]},
-                            {value: ratingData.yAxis[4], name: ratingData.xAxis[4]},
-                            {value: ratingData.yAxis[5], name: ratingData.xAxis[5]}
-                        ],
-                        itemStyle: {
-                            emphasis: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                var ratingOption = {
+                    title: {
+                        text: 'User-Book-Rating',
+                        subtext: 'Rating(1-5)',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    // legend: {
+                    //     orient: 'vertical',
+                    //     left: 'left',
+                    //     data: ratingData.xAxis
+                    // },
+                    series: [
+                        {
+                            name: '评分值',
+                            type: 'pie',
+                            radius: '80%',
+                            center: ['50%', '60%'],
+                            data: [
+                                {value: ratingData.yAxis[1], name: ratingData.xAxis[1]},
+                                {value: ratingData.yAxis[2], name: ratingData.xAxis[2]},
+                                {value: ratingData.yAxis[3], name: ratingData.xAxis[3]},
+                                {value: ratingData.yAxis[4], name: ratingData.xAxis[4]},
+                                {value: ratingData.yAxis[5], name: ratingData.xAxis[5]}
+                            ],
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                },
+                                normal: {
+                                    label: {
+                                        show: true,
+                                        formatter: '{b} : {c} ({d}%)'
+                                    },
+                                    labelLine: {show: true}
+                                }
                             }
                         }
-                    }
-                ]
-            };
-            ;
-            ratingChart.hideLoading();
-            ratingChart.setOption(ratingOption);
-        });
+                    ]
+                };
+                ;
+                ratingChart.hideLoading();
+                ratingChart.setOption(ratingOption);
+            }
+        )
+        ;
 
         // 3D评价模型
 

@@ -112,6 +112,10 @@ public class SentimentController {
             String[] noRatingStr = pagedNoRatingCommentStrList.get(i).split("##\\*##");
             BayesResDTO bayesResDTO = new BayesResDTO(bayesResStr[0], simpleBookInfoMapper.getBookByNo(bayesResStr[1]).getTitle(), noRatingStr[2], Integer.valueOf(bayesResStr[2]));
             bayesResDTO.setType(bayesResDTO.getRating() == 5 ? "积极" : "消极");
+            if (bayesResDTO.getContent().contains("20")) {
+                continue;
+            }
+            bayesResDTO.setContent(bayesResDTO.getContent().length() > 30 ? bayesResDTO.getContent().substring(0, 30) + "..." : bayesResDTO.getContent());
             bayesResDTOList.add(bayesResDTO);
         }
         modelMap.put("bayesResList", bayesResDTOList);
